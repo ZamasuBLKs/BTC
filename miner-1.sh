@@ -55,20 +55,17 @@ read -p "DIGITE AGORA SUA CARTEIRA: " wallet
 read -p "DIGITE AGORA QUANTOS NUCLEOS: " core
 echo -e "Stratum Ex:\n$strat\n\n"
 read -p "DIGITE AGORA O STRATUM PROXY: " stratuum
-fi
 if [ "$wallet" = ""  ]; then
 echo -e "\033[01;33m=====================================================================\033[01;0m"
 echo -e "			\033[41;1;37m Minerar BITCOIN  $versao \033[0m "				
 echo -e "            \033[1;32m CARTEIRA NAO INFORMADA!!!\033[0m\n"
 echo -e "\033[01;33m=====================================================================\033[0m"
 exit 0
-fi
 if [ "$core" = ""  ]; then
 echo -e "\033[01;33m=====================================================================\033[01;0m"
 echo -e "\033[01;37;41mERROR:2 'ADICIONE O NUMERO DE NUCLEOS' Ao final Do Arquivo..\033[0m"
 echo -e "\033[01;33m=====================================================================\033[01;0m"
 exit 0
-fi
 echo -e "\033[41;1;37m Minerar BTC $versao \033[0m "	
 echo -e "CARTEIRA CONFIGURADA : \033[01;32m $wallet\033[0m   "
 echo -e "\033[01;31m	 * Minerar Bitcoin  http://Zpool.ca \033[0m   \n"
@@ -117,7 +114,6 @@ break
 else
 echo -e "Nenhuma Opcao Foi Selecionada!"
 sleep 1s
-fi
 done
 retorno="${opton}"
 }
