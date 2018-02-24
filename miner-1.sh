@@ -96,7 +96,7 @@ echo -e "\033[37;41mSua Mineração Foi Iniciada  .. Abrindo sessao em 3segundos
 echo -e "\033[37;41m COMANDO [screen -x zpool] \033[0m"
 sleep 3s
 screen -dmS zpool minerd -a yescrypt -o stratum -t ${core} -R 30
-}
+
 
 menu () {
 while true; do
@@ -116,7 +116,7 @@ echo -e "Nenhuma Opcao Foi Selecionada!"
 sleep 1s
 done
 retorno="${opton}"
-}
+
 
 menu
 [[ $retorno = "0" ]] && echo "Saindo"
