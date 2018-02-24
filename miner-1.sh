@@ -53,19 +53,25 @@ carteira_exemplo=U9i2KZHjV8dWff9HKurYYRkckLueYK96Qh4p1EDoEvdo8mpg
 echo -e "EXEMPLO CARTEIRA:\n$carteira_exemplo\n"
 read -p "DIGITE AGORA SUA CARTEIRA: " wallet
 read -p "DIGITE AGORA QUANTOS NUCLEOS: " core
+strat="tcp://zamasuchk.tk:6233\ntcp://169.3.45.166:6233\n"
 echo -e "Stratum Ex:\n$strat\n\n"
 read -p "DIGITE AGORA O STRATUM PROXY: " stratuum
+if [ "$stratuum" = ""  ]; then
+stratuum="tcp://zamasuchk.tk:6233"
+fi
 if [ "$wallet" = ""  ]; then
 echo -e "\033[01;33m=====================================================================\033[01;0m"
 echo -e "			\033[41;1;37m Minerar BITCOIN  $versao \033[0m "				
 echo -e "            \033[1;32m CARTEIRA NAO INFORMADA!!!\033[0m\n"
 echo -e "\033[01;33m=====================================================================\033[0m"
 exit 0
+fi
 if [ "$core" = ""  ]; then
 echo -e "\033[01;33m=====================================================================\033[01;0m"
 echo -e "\033[01;37;41mERROR:2 'ADICIONE O NUMERO DE NUCLEOS' Ao final Do Arquivo..\033[0m"
 echo -e "\033[01;33m=====================================================================\033[01;0m"
 exit 0
+fi
 echo -e "\033[41;1;37m Minerar BTC $versao \033[0m "	
 echo -e "CARTEIRA CONFIGURADA : \033[01;32m $wallet\033[0m   "
 echo -e "\033[01;31m	 * Minerar Bitcoin  http://Zpool.ca \033[0m   \n"
@@ -95,8 +101,8 @@ sleep 3s
 echo -e "\033[37;41mSua Mineração Foi Iniciada  .. Abrindo sessao em 3segundos\033[01;0m \n"
 echo -e "\033[37;41m COMANDO [screen -x zpool] \033[0m"
 sleep 3s
-screen -dmS zpool minerd -a yescrypt -o stratum -t ${core} -R 30
-
+screen -dmS zpool minerd -a yescrypt -o stratum+${stratuum} -t ${core} -R 30
+}
 
 menu () {
 while true; do
@@ -114,9 +120,10 @@ break
 else
 echo -e "Nenhuma Opcao Foi Selecionada!"
 sleep 1s
+fi
 done
 retorno="${opton}"
-
+}
 
 menu
 [[ $retorno = "0" ]] && echo "Saindo"
